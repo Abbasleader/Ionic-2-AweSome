@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center">
+    <ion-buttons slot="end">
+      <ion-button routerLink="add-place">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let place of places; let i = index" (click)="onOpenPlace(place, i)">
+    <ion-img [src]="place.imagePath"></ion-img>
+    <ion-card-content>
+      <h2>{{place.title}}</h2>
+      <ion-label>{{ place.description }}</ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

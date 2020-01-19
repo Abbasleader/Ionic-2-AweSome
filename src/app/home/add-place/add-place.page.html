@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" #buttons></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add a Place</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="placeForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-label position="floating">Title</ion-label>
+              <ion-input type="text" formControlName="title"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Short Description</ion-label>
+            <ion-textarea
+              formControlName="description"
+              type="text"
+            ></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-text-center">
+        <ion-col>
+          <ion-button
+            fill="outline"
+            expand="block"
+            routerLink="/home/set-location"
+          >
+            <ion-icon name="map"></ion-icon>
+            <ion-label>Select on Map</ion-label>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-margin-top">
+        <ion-col>
+          <ion-label>Selected Place...</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-img></ion-img>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <h2>Take a Photo!</h2>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button
+            expand="block"
+            fill="outline"
+            size="default"
+            type="button"
+            (click)="takeImage()"
+          >
+            <ion-icon name="camera"></ion-icon>
+            <ion-label>Open Cameraa</ion-label>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="image !== null">
+        <ion-col>
+          <ion-img [src]="image"></ion-img>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button
+            [disabled]="!placeForm.valid"
+            color="success"
+            type="button"
+            expand="block"
+            size="default"
+            (click)="onSubmit()"
+            >Add this Place</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
